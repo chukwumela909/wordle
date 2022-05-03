@@ -1,0 +1,73 @@
+body{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.black{
+  background-color: black;
+}
+
+.keyboard{
+    user-select: none;
+}
+
+.key{
+  margin: .06em;
+  padding: .50em;
+  font-size: 1em;
+}
+
+.guessgrid{
+   display: grid;
+   grid-template-columns: repeat(5, 4em);
+   grid-template-rows: repeat(6, 4em);
+   gap: .50em;
+   flex-grow: .3;
+}
+
+.tile{
+  border: 4px solid gray;
+  padding: 1em;
+  color: white;
+  transition: all linear 250ms;
+}
+
+.tile[data-state = "active"]{
+  border-color: white;  
+}
+
+.tile[data-state="wrong"]{
+  background-color: hsl(0, 0%, 31%);
+}
+
+.tile[data-state="wrong-location"]{
+ background-color:  hsl(61, 89%, 50%)
+}
+
+.tile[data-state="correct"]{
+ background-color:  hsl(127, 89%, 40%)
+}
+
+.wrong{
+  background-color:  hsl(0, 0%, 31%);
+  pointer-events: none;
+}
+
+.correct{
+  background-color:  hsl(127, 89%, 40%);
+}
+
+.wrong-location{
+  background-color:  hsl(61, 89%, 50%);
+}
+
+.flip{
+  transform: rotateY(90deg);
+}
+
+.pointer-none{
+  pointer-events: none;
+}
