@@ -1,4 +1,4 @@
-const targetWords = ["plate", "ajayi", "moses", "seven", "abcde"];
+const targetWords = ["plate", "smear", "roses", "seven", "seive"];
 
 const dictionary = [
   "ajayi",
@@ -5764,7 +5764,9 @@ const dictionary = [
 
 const date = Date.now()
 
-const targetWord = targetWords[3];
+let randomnumber = Math.floor(Math.random()*5001) 
+
+const targetWord = dictionary[randomnumber];
 
 const guessGrid = document.querySelector("[data-guessgrid]");
 const keyboard = document.querySelector("[data-keyboard]");
@@ -5806,7 +5808,7 @@ startGame();
 const submitguess = () => {
   const activeTiles = [...getActiveTiles()];
   if (activeTiles.length !== 5) {
-    console.log("not enough letters");
+   alert("not enough letter")
     return;
   }
 
@@ -5815,7 +5817,7 @@ const submitguess = () => {
   }, "");
 
   if (!dictionary.includes(guess)) {
-    console.log("WORD DOES NOT EXIST");
+    alert("WORD DOES NOT EXIST");
     return;
   }
 
@@ -5860,7 +5862,7 @@ const flipTile = (tile, index, array, guess) => {
 
 const checkWin = (guess, tiles) => {
   if (targetWord === guess) {
-    console.log("won!!!!!!");
+    alert("won!!!!!!");
     keys = keyboard.querySelectorAll('[data-key]')
     console.log(keys);
     keys.forEach(key => {
@@ -5894,3 +5896,13 @@ const presskey = (key) => {
   nextTile.textContent = key.target.innerText;
   nextTile.dataset.state = "active";
 };
+
+
+const alert = (alertmessage) => {
+const alert = document.querySelector("[data-alert]");
+    alert.textContent = alertmessage
+    alert.classList.remove("d-none")
+    setTimeout(() => {
+    alert.classList.add("d-none")
+    }, 1500);
+}
